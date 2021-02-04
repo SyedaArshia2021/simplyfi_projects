@@ -1,2 +1,2 @@
 FROM httpd:2.4
-COPY . /var/www/html
+COPY /root/git_simplyfi/simplyfi_projects/.  /var/www/html
