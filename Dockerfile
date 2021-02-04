@@ -1,2 +1,2 @@
-FROM firespring:apache2-php
+FROM httpd:2.4
 COPY . /var/www/html
