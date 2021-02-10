@@ -1,0 +1,17 @@
+{
+  agent any 
+  stages {
+     stage ('Scm Checkout') {
+         steps {
+             checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/SyedaArshia2021/simplyfi_projects.git']]])        
+         }
+     }
+     stage('Docker build') {
+                steps {
+                   sh "sudo docker rm -f testwebsite"
+                   sh "cd /var/lib/jenkins/workspace/job1 && sudo docker build -t testwebsite ."
+                   sh "sudo docker run --name testwebsite -p 8082:80 -d testwebsite"
+                }
+     }
+  } 
+}
