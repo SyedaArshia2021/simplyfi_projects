@@ -1,4 +1,4 @@
-{
+pipeline {
   agent any 
   stages {
      stage ('Scm Checkout') {
@@ -14,4 +14,12 @@
                 }
      }
   } 
+  post {
+        success {
+            emailext (body: 'Job has been completed successfully!', subject: 'Job success!', to: 'syedafamily071@gmail.com')
+        }
+        failure {
+            emailext (body: 'Job has been failed!', subject: 'Job failed!', to: 'syedafamily071@gmail.com')
+        }
+  }
 }
