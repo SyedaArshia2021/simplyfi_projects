@@ -9,8 +9,5 @@ class Test(unittest.TestCase):
    def test_titleText(self):
       pageTitle = Test.bs.find('h1').get_text()
       self.assertEqual('Congratulations', pageTitle);
-   def test_contentExists(self):
-      content = Test.bs.find('div',{'id':'mw-content-text'})
-      self.assertIsNone(content)
 if __name__ == '__main__':
    unittest.main()
