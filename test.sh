@@ -1,5 +1,5 @@
 #!/bin/sh
-if [curl “http: //http://13.57.214.107:8082” | grep -x “Congratulations folks!!”];
+if [curl"http://13.57.214.107:8082” | grep -x “Congratulations folks!!”];
   then 
    exit 0
 else 
