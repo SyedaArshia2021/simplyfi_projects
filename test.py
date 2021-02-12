@@ -8,6 +8,6 @@ class Test(unittest.TestCase):
       Test.bs = BeautifulSoup(urlopen(url), 'html.parser')
    def test_titleText(self):
       pageTitle = Test.bs.find('h1').get_text()
-      self.assertEqual('Congratulations folks!! ', pageTitle);
+      self.assertEqual(' Congratulations folks!! ', pageTitle);
 if __name__ == '__main__':
    unittest.main()
