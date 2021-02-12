@@ -4,7 +4,7 @@ import unittest
 class Test(unittest.TestCase):
    bs = None
    def setUpClass():
-      url = '<a href="http://3.101.54.80:8082"></a>'
+      url = "13.57.214.107:8082"
       Test.bs = BeautifulSoup(urlopen(url), 'html.parser')
    def test_titleText(self):
       pageTitle = Test.bs.find('h1').get_text()
