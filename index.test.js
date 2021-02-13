@@ -1,4 +1,4 @@
-import  getByText  from '@testing-library/dom'
+import getByText from '@testing-library/dom'
 
 import '@testing-library/jest-dom/extend-expect'
 
