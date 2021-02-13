@@ -40,7 +40,7 @@ describe('index.html', () => {
 
     expect(container.querySelector('h1')).not.toBeNull()
 
-    expect(getByText(container, ‘ Congratulations folks!! ')).toBeInTheDocument()
+    expect(getByText(container, ' Congratulations folks!! ')).toBeInTheDocument()
 
   })
 })
