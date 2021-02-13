@@ -1,4 +1,3 @@
-import { getByText } from '@testing-library/dom'
 import '@testing-library/jest-dom/extend-expect'
 import { JSDOM } from 'jsdom'
 
