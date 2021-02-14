@@ -21,3 +21,4 @@ test("pass functions to matchers", () => {
   }
 
   getByTextWithMarkup('Hello world')
+}
