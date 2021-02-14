@@ -5,13 +5,15 @@ import { screen,render } from '@testing-library/react'
 test("pass functions to matchers", () => {
   const Hello = () => (
     <div>
-      Hello <span>world</span>
+      <h1>
+        Congratulations folks!!
+      </h1>
     </div>
   );
   const { getByText } = render(<Hello />);
 
   getByText((content, node) => {
-    const hasText = node => node.textContent === "Hello world";
+    const hasText = node => node.textContent === "Congratulations folks!!";
     const nodeHasText = hasText(node);
     const childrenDontHaveText = Array.from(node.children).every(
       child => !hasText(child)
