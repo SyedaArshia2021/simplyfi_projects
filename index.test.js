@@ -18,6 +18,6 @@ test("pass functions to matchers", () => {
       )
       return hasText(node) && childrenDontHaveText
     })
-  }
+  }}
 
   getByTextWithMarkup(' Congratulation folks!! ')
