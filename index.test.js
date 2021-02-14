@@ -22,6 +22,6 @@ describe('index.html', () => {
 
   it('renders a heading element', () => {
     expect(container.querySelector('h1')).not.toBeNull()
-    expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument()
+    expect(screen.getByText(container, 'Congratulations')).toBeInTheDocument()
   })
 })
