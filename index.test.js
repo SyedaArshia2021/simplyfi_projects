@@ -21,6 +21,6 @@ describe('index.html', () => {
   })
 
   it('renders a heading element', () => {
-    expect(screen.getByText(container, 'Congratulations')).toBeInTheDocument()
+    screen.getByRole('heading', {level : 1})
   })
 })
