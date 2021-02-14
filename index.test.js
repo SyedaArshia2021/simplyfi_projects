@@ -24,6 +24,6 @@ describe('index.html', () => {
   })
 
   it('renders a heading element', () => {
-    expect(heading.textContent).toBe(" Congratulations folks!! ")
+    expect(getByText(container, ' Congratulations folks!! ')).toBeInTheDocument()
   })
 })
