@@ -1,5 +1,6 @@
 import { getByText } from '@testing-library/dom'
 import '@testing-library/jest-dom/extend-expect'
+import { screen } from '@testing-library/react'
 import { JSDOM } from 'jsdom'
 import fs from 'fs'
 import path from 'path'
@@ -21,6 +22,6 @@ describe('index.html', () => {
 
   it('renders a heading element', () => {
     expect(container.querySelector('h1')).not.toBeNull()
-    expect(getByText(container, ' Congratulations folks!! ')).toBeInTheDocument()
+    expect(screen.getByRole('heading', {name: /Congratulations/)).toBeInTheDocument()
   })
 })
