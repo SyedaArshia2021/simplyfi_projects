@@ -10,5 +10,5 @@ test("pass functions to matchers", () => {
     </div>
   );
   render(<Hello />);
-  expect(getByText(' Congratulations folks!! ')).toBeInTheDocument();
+  expect(screen.getByText(' Congratulations folks!! ')).toBeInTheDocument();
 })
