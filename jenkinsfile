@@ -6,6 +6,11 @@ pipeline {
              checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/SyedaArshia2021/simplyfi_projects.git']]])        
          }
      }
+     stage('Unit testing') {
+         steps {
+             sh "npm test -- -u"
+         }
+     }
      stage('Docker build') {
                 steps {
                    sh "sudo docker rm -f testwebsite"
@@ -13,7 +18,12 @@ pipeline {
                    sh "sudo docker run --name testwebsite -p 8082:80 -d testwebsite"
                 }
      }
-  } 
+     stage('Test') {
+         steps {
+             sh "python3 test.py"
+         }
+     }
+  }
   post {
         success {
             emailext (body: 'Job has been completed successfully!', subject: 'Job success!', to: 'syedafamily071@gmail.com')
