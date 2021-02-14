@@ -11,13 +11,16 @@ let dom
 let container
 
 describe('index.html', () => {
-  beforeEach(() => {
+  beforeEach(function(done) {
+    JSDOM.fromFile(index.html)
     // Constructing a new JSDOM with this option is the key
     // to getting the code in the script tag to execute.
     // This is indeed dangerous and should only be done with trusted content.
     // https://github.com/jsdom/jsdom#executing-scripts
-    dom = new JSDOM(html, { runScripts: 'dangerously' })
-    container = dom.window.document.body
+    .then((dom) => {
+      container = dom.window.document.body
+    })
+    .then(done ,done)
   })
 
   it('renders a heading element', () => {
