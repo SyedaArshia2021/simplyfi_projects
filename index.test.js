@@ -12,7 +12,7 @@ let container
 
 describe('index.html', () => {
   beforeEach(function(done) {
-    JSDOM.fromFile(myFile)
+    JSDOM.fromFile('/var/lib/jenkins/workspace/job1/index.html')
     // Constructing a new JSDOM with this option is the key
     // to getting the code in the script tag to execute.
     // This is indeed dangerous and should only be done with trusted content.
