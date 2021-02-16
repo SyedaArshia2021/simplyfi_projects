@@ -6,7 +6,7 @@ test("pass functions to matchers", () => {
   const Hello = () => (
     <div>
       <h1>
-        Congratulations folks!!
+        Congratulations peeps!!
       </h1>
     </div>
   );
