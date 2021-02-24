@@ -12,13 +12,24 @@ pipeline {
          }
      }
      stage('Docker build') {
-                steps {
-                   sh "sudo docker rm -f testwebsite"
-                   sh "cd /var/lib/jenkins/workspace/job1 && sudo docker build -t testwebsite ."
-                   sh "sudo docker run --name testwebsite -p 8082:80 -d testwebsite"
-                }
+         steps {
+             sh "sudo docker rm -f testwebsite"
+             sh "cd /var/lib/jenkins/workspace/job1 && sudo docker build -t testwebsite ."
+         }
      }
-     stage('Test') {
+     stage("docker_scan") {
+         steps {
+             sh "./clair-scanner --ip='172.17.0.1' testwebsite:latest || exit 0"
+         }
+             
+     }
+      
+     stage('Deploy') {
+         steps {
+             sh "sudo docker run --name testwebsite -p 8082:80 -d testwebsite"
+         }
+     }
+     stage('Smoke Test') {
          steps {
              sh "python3 test.py"
          }
