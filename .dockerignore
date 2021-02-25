@@ -1,0 +1,10 @@
+clair-scanner
+*.json
+node_modules/
+jenkinsfile
+test.py
+test.sh
+test.txt
+sonar-scanner-3.3.0.1492-linux/
+*.md
+sonar-scanner-3.3.0.1492-linux.zip
