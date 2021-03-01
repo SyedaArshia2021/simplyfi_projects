@@ -1,13 +1,30 @@
-pipeline {
-  agent any 
+ {
+  agent any
   stages {
      stage ('Scm Checkout') {
          steps {
              checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/SyedaArshia2021/simplyfi_projects.git']]])        
          }
      }
-     stage('Unit testing') {
+     stage ('SonarQube Analysis') {
+         environment {
+             scannerHome =tool 'SonarQube'
+         }
          steps {
+             withSonarQubeEnv('SonarQube') {
+                  sh "/var/lib/jenkins/workspace/job1/sonar-scanner-3.3.0.1492-linux/bin/sonar-scanner \
+                 -Dsonar.projectKey=myproject \
+                 -Dsonar.sources=. \
+                 -Dsonar.login=cc02db30894d467dba42feb8e2e334f04833a11b \
+                 -Dsonar.inclusions=**/index.html \
+                 -Dsonar.test.exclusions=**/*"
+             }
+         }
+     }
+     stage('Unit testing') {
+       tools {nodejs "node"}
+         steps {
+             sh "node --version"
              sh "npm test -- -u"
          }
      }
@@ -19,6 +36,7 @@ pipeline {
      }
      stage("docker_scan") {
          steps {
+             sh "sudo chmod 666 /var/run/docker.sock"
              sh "./clair-scanner --ip='172.17.0.1' testwebsite:latest || exit 0"
          }
              
@@ -44,3 +62,4 @@ pipeline {
         }
   }
 }
+
